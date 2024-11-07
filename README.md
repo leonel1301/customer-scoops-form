@@ -1,6 +1,6 @@
 # 🎨 Customer Scoops Form con React + TypeScript + Vite
 
-Proyecto de portfolio personal desarrollado con React, TypeScript y Vite, implementando un diseño moderno y responsivo con styled-components.
+Formulario que cuenta con diversos pasos donde el usuario puede ingresar datos de valor para la empresa.
 
 ## 🚀 Tecnologías Utilizadas
 
