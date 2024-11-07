@@ -53,14 +53,14 @@ export const SecondGridContainer = styled.div`
 export const ButtonWrapper = styled.div<{ $isLast: boolean; $totalItems: number }>`
   @media (max-width: 1060px) {
     ${({ $isLast, $totalItems }) =>
-      $isLast && $totalItems % 2 === 1
-        ? `
+        $isLast && $totalItems % 2 === 1
+            ? `
           grid-column: span 2;
           & > button {
             width: 100%;
             max-width: none;
           }
         `
-        : ''}
+            : ''}
   }
 `;

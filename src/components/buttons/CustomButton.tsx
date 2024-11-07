@@ -6,9 +6,10 @@ interface CustomButtomProps {
     onClick: () => void;
     backClick: () => void;
     step: number;
+    disabled?: boolean;
 }
 
-export default function CustomButtom({ onClick, backClick, step }: CustomButtomProps) {
+export default function CustomButtom({ onClick, backClick, step, disabled}: CustomButtomProps) {
     const buttonText = step === 0 ? "Comenzar" : step === 5 ? "Finalizar" : "Siguiente";
     const handleClick = () => {
         window.location.href = "https://www.customerscoops.com/";
@@ -18,7 +19,7 @@ export default function CustomButtom({ onClick, backClick, step }: CustomButtomP
         return (
             <CustomButtonContainer>
                 <CustomButtonSection>
-                    <StyledButton onClick={step === 5 ? handleClick : onClick}>
+                    <StyledButton disabled={disabled} onClick={step === 5 ? handleClick : onClick}>
                         {buttonText}
                     </StyledButton>
                 </CustomButtonSection>
@@ -33,7 +34,7 @@ export default function CustomButtom({ onClick, backClick, step }: CustomButtomP
             </BackStyledButton>
             <SideButtonContainer>
                 <BackButtonSection>
-                    <StyledButton onClick={onClick}>
+                    <StyledButton disabled={disabled} onClick={onClick}>
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                             {buttonText}
                             <img src={arrow_green} style={{ marginLeft: "8px", width:'8.44px', height: '8.1px' }} alt="Next Arrow" />

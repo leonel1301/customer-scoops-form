@@ -1,13 +1,14 @@
-import { useState } from "react";
 import ButtonScoopCo from "../../components/buttons/ButtonScoopCo";
 import ButtonScoopsBw from "../../components/buttons/ButtonScoopsBw";
 import { ButtonWrapper, GridContainer, SecondGridContainer, StepsLayoutContainer } from "./StepsLayout.styles";
 
 interface StepsLayoutProps {
     step: number;
+    selectedButtons: { [key: string]: number };
+    setSelectedButtons: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>;
 }
 
-export default function StepsLayout({ step }: StepsLayoutProps) {
+export default function StepsLayout({ step, selectedButtons, setSelectedButtons }: StepsLayoutProps) {
     const positions = ['Board member', 'C-level', 'Gerente', 'Subgerente', 'Jefe área', 'Líder de área', 'Ejecutivo / Analista', 'Otro'];
     const challenges = ['Aumentar conversión de leads a clientes', 'Reducir customer churn', 'Implementar un programa VoC',
         'Reducir costos en gestión de reclamos', 'Optimizar procesos comerciales', 'Optimizar procesos operativos', 'Otros'];
@@ -16,12 +17,6 @@ export default function StepsLayout({ step }: StepsLayoutProps) {
         'Mayorista', 'Retail', 'Otra'
     ];
 
-    const [selectedButtons, setSelectedButtons] = useState<{ [key: string]: number }>({
-        first: -1,
-        second: -1,
-        third: -1,
-        fourth: -1,
-    });
 
     const handleClick = (button: string, text: number) => {
         setSelectedButtons((prev) => ({
@@ -38,9 +33,7 @@ export default function StepsLayout({ step }: StepsLayoutProps) {
                     <GridContainer>
                         {
                             positions.map((position, index) => (
-                                <ButtonWrapper key={index} $isLast={index === positions.length - 1} $totalItems={positions.length}>
-                                    <ButtonScoopsBw key={index} text={position} onClick={() => handleClick("first", index)} selected={(selectedButtons.first === index) ? true : false} />
-                                </ButtonWrapper>
+                                <ButtonScoopsBw key={index} text={position} onClick={() => handleClick("first", index)} selected={(selectedButtons.first === index) ? true : false} />
                             ))
                         }
                     </GridContainer>
@@ -62,12 +55,14 @@ export default function StepsLayout({ step }: StepsLayoutProps) {
                     <GridContainer>
                         {
                             crms.map((crm, index) => (
-                                <ButtonScoopsBw
-                                    key={index}
-                                    text={crm}
-                                    onClick={() => handleClick("third", index)}
-                                    selected={(selectedButtons.third === index) ? true : false}
-                                />
+                                <ButtonWrapper key={index} $isLast={index === positions.length - 1} $totalItems={positions.length}>
+                                    <ButtonScoopsBw
+                                        key={index}
+                                        text={crm}
+                                        onClick={() => handleClick("third", index)}
+                                        selected={(selectedButtons.third === index) ? true : false}
+                                    />
+                                </ButtonWrapper>
                             ))
                         }
                     </GridContainer>

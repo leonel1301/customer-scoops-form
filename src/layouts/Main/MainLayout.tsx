@@ -35,10 +35,10 @@ export default function MainLayout() {
         <><b>Ahora te vamos a sorprender...</b><br />
             ¿A cuál industria pertenece tu empresa?
         </>,
-        <><b>Muchas Gracias </b><br/>
+        <><b>Muchas Gracias </b><br />
             por querer ser parte
             de la familia Scoopers.
-            <br /> 
+            <br />
             <br />
             <CustomText textSize="20px"><i>Nos vemos pronto!</i></CustomText></>
     ];
@@ -51,6 +51,18 @@ export default function MainLayout() {
         setCurrentStep((prevStep) => Math.max(prevStep - 1, 0));
     };
 
+    const [selectedButtons, setSelectedButtons] = useState<{ [key: string]: number }>({
+        first: -1,
+        second: -1,
+        third: -1,
+        fourth: -1,
+    });
+
+    const selectedCount = Object.values(selectedButtons).filter(value => value !== -1).length;
+
+    const isButtonDisabled =
+        (currentStep === 0 && !name) ||
+        (currentStep >= 1 && selectedCount < currentStep);
 
     return (
         <MainContainer $currentStep={currentStep}>
@@ -71,9 +83,9 @@ export default function MainLayout() {
                     currentStep === 0 && <InputComponent name={name} onChange={setName} />
                 }
                 {
-                    currentStep >= 1 && <StepsLayout step={currentStep} />
+                    currentStep >= 1 && <StepsLayout step={currentStep} selectedButtons={selectedButtons} setSelectedButtons={setSelectedButtons} />
                 }
-                <CustomButtom step={currentStep} backClick={handlePreviousStep} onClick={handleNextStep} />
+                <CustomButtom step={currentStep} backClick={handlePreviousStep} onClick={handleNextStep} disabled={isButtonDisabled} />
             </SideContainer>
             <ImageComponent />
         </MainContainer>
