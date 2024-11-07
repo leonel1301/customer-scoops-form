@@ -15,11 +15,13 @@ export default function CustomButtom({ onClick, backClick, step, disabled}: Cust
         window.location.href = "https://www.customerscoops.com/";
     }
 
+    const isDisabled = (step !== 5 && disabled);
+
     if (step === 0 || step === 5) {
         return (
             <CustomButtonContainer>
                 <CustomButtonSection>
-                    <StyledButton disabled={disabled} onClick={step === 5 ? handleClick : onClick}>
+                    <StyledButton disabled={isDisabled} onClick={step === 5 ? handleClick : onClick}>
                         {buttonText}
                     </StyledButton>
                 </CustomButtonSection>

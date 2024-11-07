@@ -25,7 +25,7 @@ export default function MailComponent() {
                             Tu opinión es clave para ayudarnos a mejorar y adaptarnos a lo que
                             realmente necesitas. Nos tomará solo unos minutos de tu tiempo.
                         </MailParagraph>
-                        <MailButton onClick={() => window.location.href = 'https://www.ejemplo.com'}>
+                        <MailButton onClick={() => window.location.href = 'https://customer-scoops-form-six.vercel.app'}>
                             Ingresa Aquí
                         </MailButton>
                         <MailParagraph $marginTop="30px">
