@@ -72,6 +72,11 @@ export const StyledButton = styled.button`
   border-radius: 4px;
 `;
 ```
+### Email Service
+Se usó Nodejs y Resend para lograr el objetivo de enviar mail.
+```bash
+https://github.com/leonel1301/resend-customer-scoops
+```
 
 ### Layouts
 La estructura de layouts permite una organización modular:
