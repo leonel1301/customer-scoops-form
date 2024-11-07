@@ -25,7 +25,6 @@ src/
 1. Clona el repositorio:
 ```bash
 git clone https://github.com/leonel1301/customer-scoops-form
-cd tu-portfolio
 ```
 
 2. Instala las dependencias:
